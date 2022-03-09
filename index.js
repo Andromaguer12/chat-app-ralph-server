@@ -1,12 +1,10 @@
 const app = require("express")()
-const morgan = require("morgan")
 const path = require("path")
 const {mongoose} = require("./db");
 
 
 // settings
 // app.set("port", process.env.PORT || 8080)
-app.use(morgan("dev"))
 app.use(require("express").json())
 
 // realtime
