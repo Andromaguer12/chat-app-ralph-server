@@ -1,15 +1,25 @@
 const app = require("express")()
 const path = require("path")
 const {mongoose} = require("./db");
+const cors = require("cors")
 
 
 // settings
-// app.set("port", process.env.PORT || 8080)
+app.use(cors({
+    origin: "https://chat-app-ralph.web.app/login",
+    methods: ["GET", "POST"]
+
+}))
 app.use(require("express").json())
 
 // realtime
 const http = require("http").createServer(app)
-const io = require('socket.io')(http)
+const io = require('socket.io')(http, {
+    cors: {
+        origin: "https://chat-app-ralph.web.app",
+        methods: ["GET", "POST"]
+    }
+})
 
 // connect sockets
 require("./sockets/chatSocket")(io)
