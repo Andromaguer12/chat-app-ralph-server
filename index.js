@@ -6,7 +6,7 @@ const cors = require("cors")
 
 // settings
 app.use(cors({
-    origin: "https://chat-app-ralph.web.app/login",
+    origin: "https://chat-app-ralph.web.app",
     methods: ["GET", "POST"]
 
 }))
